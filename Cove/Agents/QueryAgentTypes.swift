@@ -95,11 +95,11 @@ enum QueryAgentError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .missingPrompt:
-            "Describe the query or correction first."
+            L10n.tr("Describe the query or correction first.")
         case .noConnection:
-            "Connect to a database before using an agent."
+            L10n.tr("Connect to a database before using an agent.")
         case .missingAgent:
-            "Choose an agent first."
+            L10n.tr("Choose an agent first.")
         case .launchUnavailable(let message):
             message
         case .invalidResponse(let message):

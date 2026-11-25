@@ -1,0 +1,199 @@
+/* Menu bar & Commands */
+"New Tab" = "New Tab";
+"Refresh" = "Refresh";
+"Agent Mode" = "Agent Mode";
+"Language" = "Language";
+"Follow System" = "Follow System";
+
+/* Main Window & Toolbar */
+"Click" = "Click";
+"to create a new connection" = "to create a new connection";
+"Delete Connection" = "Delete Connection";
+"Cancel" = "Cancel";
+"Delete" = "Delete";
+"Are you sure you want to delete \"%@\"?" = "Are you sure you want to delete \"%@\"?";
+"No connection" = "No connection";
+"Query" = "Query";
+"Select a table or open a query" = "Select a table or open a query";
+"Data" = "Data";
+"Structure" = "Structure";
+"Toggle Sidebar" = "Toggle Sidebar";
+"Toggle Inspector" = "Toggle Inspector";
+
+/* Environments */
+"Production" = "Production";
+"Staging" = "Staging";
+"Development" = "Development";
+"Local" = "Local";
+
+/* Connection Rail & Dialog */
+"Disconnect" = "Disconnect";
+"Edit" = "Edit";
+"New Connection" = "New Connection";
+"Edit Connection" = "Edit Connection";
+"Name" = "Name";
+"Backend" = "Backend";
+"Environment" = "Environment";
+"Database File" = "Database File";
+"Path to database file" = "Path to database file";
+"Browse..." = "Browse...";
+"Host" = "Host";
+"Port" = "Port";
+"User" = "User";
+"Password" = "Password";
+"Database" = "Database";
+"Test" = "Test";
+"Save" = "Save";
+"Connecting..." = "Connecting...";
+"Connect" = "Connect";
+"Test Successful" = "Test Successful";
+"Test Failed" = "Test Failed";
+"OK" = "OK";
+"SSH Tunnel" = "SSH Tunnel";
+"SSH Host" = "SSH Host";
+"SSH Port" = "SSH Port";
+"SSH User" = "SSH User";
+"Auth Method" = "Auth Method";
+"SSH Password" = "SSH Password";
+"Private Key" = "Private Key";
+"Passphrase" = "Passphrase";
+"Passphrase (if any)" = "Passphrase (if any)";
+"Select Database File" = "Select Database File";
+"Select SSH Private Key" = "Select SSH Private Key";
+"Connection successful." = "Connection successful.";
+"Connection timed out after 15 seconds." = "Connection timed out after 15 seconds.";
+"Requires brew install duckdb. Full Swift support is pending the official duckdb-swift package." = "Requires brew install duckdb. Full Swift support is pending the official duckdb-swift package.";
+
+/* Sidebar & Tree */
+"Connect to a database" = "Connect to a database";
+"New %@" = "New %@";
+"New %@..." = "New %@...";
+"Drop %@..." = "Drop %@...";
+"SQL Preview" = "SQL Preview";
+"Execute" = "Execute";
+"Confirm Drop" = "Confirm Drop";
+
+/* Data Table & Row Inspector */
+"Review Changes" = "Review Changes";
+"New Row" = "New Row";
+"Row %lld" = "Row %lld";
+"Deleting" = "Deleting";
+"Select a row to inspect" = "Select a row to inspect";
+"Rows %u-%u of %llu  Page %u/%u" = "Rows %u-%u of %llu  Page %u/%u";
+"Rows %u-%u  Page %u/%u" = "Rows %u-%u  Page %u/%u";
+
+/* Query Editor & Agent */
+"Run Current" = "Run Current";
+"Ask %@ to create or edit this query" = "Ask %@ to create or edit this query";
+"Ask an agent to create or edit this query" = "Ask an agent to create or edit this query";
+"Close Agent Mode" = "Close Agent Mode";
+"Generate" = "Generate";
+"Generate Query" = "Generate Query";
+"Select Agent" = "Select Agent";
+"agent mode" = "agent mode";
+"%llu rows affected" = "%llu rows affected";
+"Showing 10,000 of %lld rows" = "Showing 10,000 of %lld rows";
+"%lld rows" = "%lld rows";
+"Generated with %@" = "Generated with %@";
+"Timed out generating query with %@." = "Timed out generating query with %@.";
+
+/* Creatable Child Labels */
+"Schema" = "Schema";
+"Table" = "Table";
+"View" = "View";
+"Sequence" = "Sequence";
+"Collection" = "Collection";
+"Index" = "Index";
+"Key" = "Key";
+"Keyspace" = "Keyspace";
+
+/* Create Form Field Labels */
+"AS Query" = "AS Query";
+"Capped" = "Capped";
+"Character Set" = "Character Set";
+"Collection Name" = "Collection Name";
+"Column Name" = "Column Name";
+"Column Type" = "Column Type";
+"Encoding" = "Encoding";
+"Engine" = "Engine";
+"Field" = "Field";
+"Increment By" = "Increment By";
+"Index Name" = "Index Name";
+"Max Size (bytes)" = "Max Size (bytes)";
+"Member" = "Member";
+"Number of Replicas" = "Number of Replicas";
+"Number of Shards" = "Number of Shards";
+"Owner" = "Owner";
+"Replication Class" = "Replication Class";
+"Replication Factor" = "Replication Factor";
+"Score" = "Score";
+"Sequence Name" = "Sequence Name";
+"Start Value" = "Start Value";
+"Table Name" = "Table Name";
+"Type" = "Type";
+"Value" = "Value";
+"View Name" = "View Name";
+"optional" = "optional";
+
+/* Tree Structural Groups */
+"tree.group.Aggregates" = "Aggregates";
+"tree.group.Aliases" = "Aliases";
+"tree.group.Collections" = "Collections";
+"tree.group.Columns" = "Columns";
+"tree.group.Constraints" = "Constraints";
+"tree.group.Dictionaries" = "Dictionaries";
+"tree.group.Events" = "Events";
+"tree.group.Functions" = "Functions";
+"tree.group.Hashes" = "Hashes";
+"tree.group.Indexes" = "Indexes";
+"tree.group.Lists" = "Lists";
+"tree.group.Mappings" = "Mappings";
+"tree.group.Materialized Views" = "Materialized Views";
+"tree.group.Packages" = "Packages";
+"tree.group.Parts" = "Parts";
+"tree.group.Procedures" = "Procedures";
+"tree.group.Sequences" = "Sequences";
+"tree.group.Sets" = "Sets";
+"tree.group.Settings" = "Settings";
+"tree.group.Sorted Sets" = "Sorted Sets";
+"tree.group.Streams" = "Streams";
+"tree.group.Strings" = "Strings";
+"tree.group.Tables" = "Tables";
+"tree.group.Triggers" = "Triggers";
+"tree.group.Types" = "Types";
+"tree.group.Views" = "Views";
+"tree.group.(no aliases)" = "(no aliases)";
+
+/* Create Form Options */
+"option.No" = "No";
+"option.Yes" = "Yes";
+"option.Strings" = "Strings";
+"option.Hashes" = "Hashes";
+"option.Lists" = "Lists";
+"option.Sets" = "Sets";
+"option.Sorted Sets" = "Sorted Sets";
+"option.Streams" = "Streams";
+
+/* Completion Details */
+"completion.function" = "function";
+"completion.keyword" = "keyword";
+"completion.schema" = "schema";
+"completion.table" = "table";
+
+/* Errors */
+"connection failed: %@" = "connection failed: %@";
+"query failed: %@" = "query failed: %@";
+"invalid path: expected %lld segments, got %lld" = "invalid path: expected %lld segments, got %lld";
+"connection test failed" = "connection test failed";
+"Describe the query or correction first." = "Describe the query or correction first.";
+"Connect to a database before using an agent." = "Connect to a database before using an agent.";
+"Choose an agent first." = "Choose an agent first.";
+"%@ requires %@ on PATH." = "%@ requires %@ on PATH.";
+"%@ did not return a query." = "%@ did not return a query.";
+"SSH authentication failed: check credentials" = "SSH authentication failed: check credentials";
+"SSH connection to %@:%lld failed" = "SSH connection to %@:%lld failed";
+"Private key path not specified" = "Private key path not specified";
+"Unsupported private key format" = "Unsupported private key format";
+"Private key is encrypted" = "Private key is encrypted";
+"Incorrect passphrase for private key" = "Incorrect passphrase for private key";
+"Could not establish SSH tunnel" = "Could not establish SSH tunnel";

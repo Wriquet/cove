@@ -15,11 +15,11 @@ struct SidebarView: View {
     @ViewBuilder
     private var content: some View {
         if state.connecting {
-            ProgressView("Connecting...")
+            ProgressView(L10n.tr("Connecting..."))
                 .font(.system(size: 12))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else if state.connection == nil {
-            Text("Connect to a database")
+            Text(L10n.tr("Connect to a database"))
                 .font(.system(size: 12))
                 .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity)
@@ -52,7 +52,7 @@ struct CreateChildSheet: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("New \(state.createSheetLabel)")
+            Text(L10n.format("New %@", L10n.tr(state.createSheetLabel)))
                 .font(.system(size: 14, weight: .semibold))
                 .padding(.horizontal, 16)
                 .padding(.top, 16)
@@ -61,16 +61,16 @@ struct CreateChildSheet: View {
             Form {
                 ForEach(state.createSheetFields) { field in
                     if let options = field.options {
-                        Picker(field.label, selection: binding(for: field)) {
+                        Picker(L10n.tr(field.label), selection: binding(for: field)) {
                             ForEach(options, id: \.self) { option in
-                                Text(option).tag(option)
+                                Text(L10n.optionLabel(option)).tag(option)
                             }
                         }
                     } else {
                         TextField(
-                            field.label,
+                            L10n.tr(field.label),
                             text: binding(for: field),
-                            prompt: Text(field.placeholder)
+                            prompt: Text(field.placeholder == "optional" ? L10n.tr("optional") : field.placeholder)
                         )
                     }
                 }
@@ -79,7 +79,7 @@ struct CreateChildSheet: View {
             .scrollDisabled(true)
             .padding(.horizontal, 4)
 
-            Text("SQL Preview")
+            Text(L10n.tr("SQL Preview"))
                 .font(.system(size: 11, weight: .medium))
                 .foregroundStyle(.secondary)
                 .padding(.horizontal, 16)
@@ -100,12 +100,12 @@ struct CreateChildSheet: View {
 
             HStack {
                 Spacer()
-                Button("Cancel") {
+                Button(L10n.tr("Cancel")) {
                     dismiss()
                 }
                 .keyboardShortcut(.cancelAction)
 
-                Button("Execute") {
+                Button(L10n.tr("Execute")) {
                     state.executeCreateChild(values: values)
                 }
                 .keyboardShortcut(.defaultAction)
@@ -138,7 +138,7 @@ struct DropConfirmSheet: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Confirm Drop")
+            Text(L10n.tr("Confirm Drop"))
                 .font(.system(size: 14, weight: .semibold))
                 .padding(.horizontal, 16)
                 .padding(.top, 16)
@@ -158,12 +158,12 @@ struct DropConfirmSheet: View {
 
             HStack {
                 Spacer()
-                Button("Cancel") {
+                Button(L10n.tr("Cancel")) {
                     dismiss()
                 }
                 .keyboardShortcut(.cancelAction)
 
-                Button("Execute") {
+                Button(L10n.tr("Execute")) {
                     state.executeTreeAction()
                 }
                 .keyboardShortcut(.defaultAction)

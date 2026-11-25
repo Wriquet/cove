@@ -101,12 +101,12 @@ struct AgentModeActionButton: View {
 
     var body: some View {
         Button(action: action) {
-            Label("agent mode", systemImage: "wand.and.sparkles")
+            Label(L10n.tr("agent mode"), systemImage: "wand.and.sparkles")
                 .labelStyle(.titleAndIcon)
         }
         .buttonStyle(.borderedProminent)
         .controlSize(.small)
         .fixedSize()
-        .help("Agent Mode")
+        .help(L10n.tr("Agent Mode"))
     }
 }

@@ -28,14 +28,14 @@ struct ConnectionDialog: View {
         let capabilities = backend.capabilities
 
         VStack(spacing: 12) {
-            Text(dialog.isEditing ? "Edit Connection" : "New Connection")
+            Text(dialog.isEditing ? L10n.tr("Edit Connection") : L10n.tr("New Connection"))
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundStyle(.primary)
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             formField("Name") {
                 HStack(spacing: 8) {
-                    TextField("Name", text: $name)
+                    TextField(L10n.tr("Name"), text: $name)
                         .textFieldStyle(.roundedBorder)
                     ColorPicker("", selection: $selectedColor, supportsOpacity: false)
                         .labelsHidden()
@@ -89,10 +89,10 @@ struct ConnectionDialog: View {
             if capabilities.usesFilePath {
                 formField("Database File") {
                     HStack(spacing: 8) {
-                        TextField("Path to database file", text: $database)
+                        TextField(L10n.tr("Path to database file"), text: $database)
                             .textFieldStyle(.roundedBorder)
                         if !sshEnabled {
-                            Button("Browse...") {
+                            Button(L10n.tr("Browse...")) {
                                 browseForDatabaseFile()
                             }
                         }
@@ -103,11 +103,11 @@ struct ConnectionDialog: View {
             if capabilities.usesHostPort {
                 HStack(spacing: 8) {
                     formField("Host") {
-                        TextField("Host", text: $host)
+                        TextField(L10n.tr("Host"), text: $host)
                             .textFieldStyle(.roundedBorder)
                     }
                     formField("Port") {
-                        TextField("Port", text: $port)
+                        TextField(L10n.tr("Port"), text: $port)
                             .textFieldStyle(.roundedBorder)
                     }
                     .frame(width: 80)
@@ -116,19 +116,19 @@ struct ConnectionDialog: View {
 
             if capabilities.usesCredentials {
                 formField("User") {
-                    TextField("User", text: $user)
+                    TextField(L10n.tr("User"), text: $user)
                         .textFieldStyle(.roundedBorder)
                 }
 
                 formField("Password") {
-                    SecureField("Password", text: $password)
+                    SecureField(L10n.tr("Password"), text: $password)
                         .textFieldStyle(.roundedBorder)
                 }
             }
 
             if capabilities.usesDatabaseName {
                 formField("Database") {
-                    TextField("Database", text: $database)
+                    TextField(L10n.tr("Database"), text: $database)
                         .textFieldStyle(.roundedBorder)
                 }
             }
@@ -148,7 +148,7 @@ struct ConnectionDialog: View {
             }
 
             HStack {
-                Button("Test") {
+                Button(L10n.tr("Test")) {
                     syncToDialog()
                     state.dialogTest()
                 }
@@ -160,20 +160,20 @@ struct ConnectionDialog: View {
                 }
 
                 Spacer()
-                Button("Cancel") {
+                Button(L10n.tr("Cancel")) {
                     state.dialogCancel()
                 }
                 .keyboardShortcut(.escape, modifiers: [])
 
                 if dialog.isEditing {
-                    Button("Save") {
+                    Button(L10n.tr("Save")) {
                         syncToDialog()
                         state.dialogSaveEdit()
                     }
                     .keyboardShortcut(.return, modifiers: [])
                     .buttonStyle(.borderedProminent)
                 } else {
-                    Button(dialog.connecting ? "Connecting..." : "Connect") {
+                    Button(dialog.connecting ? L10n.tr("Connecting...") : L10n.tr("Connect")) {
                         syncToDialog()
                         state.dialogConnect()
                     }
@@ -218,9 +218,9 @@ struct ConnectionDialog: View {
             guard let result = dialog.testResult else { return }
             let alert = NSAlert()
             alert.alertStyle = result.success ? .informational : .critical
-            alert.messageText = result.success ? "Test Successful" : "Test Failed"
+            alert.messageText = result.success ? L10n.tr("Test Successful") : L10n.tr("Test Failed")
             alert.informativeText = result.message
-            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: L10n.tr("OK"))
             alert.runModal()
             dialog.testResult = nil
         }
@@ -228,31 +228,31 @@ struct ConnectionDialog: View {
 
     @ViewBuilder
     private var sshSection: some View {
-        Toggle("SSH Tunnel", isOn: $sshEnabled)
+        Toggle(L10n.tr("SSH Tunnel"), isOn: $sshEnabled)
             .toggleStyle(.switch)
             .frame(maxWidth: .infinity, alignment: .leading)
 
         if sshEnabled {
             HStack(spacing: 8) {
                 formField("SSH Host") {
-                    TextField("SSH Host", text: $sshHost)
+                    TextField(L10n.tr("SSH Host"), text: $sshHost)
                         .textFieldStyle(.roundedBorder)
                 }
                 formField("SSH Port") {
-                    TextField("Port", text: $sshPort)
+                    TextField(L10n.tr("Port"), text: $sshPort)
                         .textFieldStyle(.roundedBorder)
                 }
                 .frame(width: 80)
             }
 
             formField("SSH User") {
-                TextField("SSH User", text: $sshUser)
+                TextField(L10n.tr("SSH User"), text: $sshUser)
                     .textFieldStyle(.roundedBorder)
             }
 
             formField("Auth Method") {
                 HStack {
-                    Picker("Auth Method", selection: $sshAuthMethod) {
+                    Picker(L10n.tr("Auth Method"), selection: $sshAuthMethod) {
                         ForEach(SSHAuthMethod.allCases, id: \.self) { method in
                             Text(method.displayName).tag(method)
                         }
@@ -266,7 +266,7 @@ struct ConnectionDialog: View {
 
             if sshAuthMethod == .password {
                 formField("SSH Password") {
-                    SecureField("SSH Password", text: $sshPassword)
+                    SecureField(L10n.tr("SSH Password"), text: $sshPassword)
                         .textFieldStyle(.roundedBorder)
                 }
             } else {
@@ -274,14 +274,14 @@ struct ConnectionDialog: View {
                     HStack(spacing: 8) {
                         TextField("~/.ssh/id_ed25519", text: $sshPrivateKeyPath)
                             .textFieldStyle(.roundedBorder)
-                        Button("Browse...") {
+                        Button(L10n.tr("Browse...")) {
                             browseForKeyFile()
                         }
                     }
                 }
 
                 formField("Passphrase") {
-                    SecureField("Passphrase (if any)", text: $sshPassphrase)
+                    SecureField(L10n.tr("Passphrase (if any)"), text: $sshPassphrase)
                         .textFieldStyle(.roundedBorder)
                 }
             }
@@ -290,7 +290,7 @@ struct ConnectionDialog: View {
 
     private func browseForDatabaseFile() {
         let panel = NSOpenPanel()
-        panel.title = "Select Database File"
+        panel.title = L10n.tr("Select Database File")
         panel.canChooseFiles = true
         panel.canChooseDirectories = false
         panel.allowsMultipleSelection = false
@@ -308,7 +308,7 @@ struct ConnectionDialog: View {
 
     private func browseForKeyFile() {
         let panel = NSOpenPanel()
-        panel.title = "Select SSH Private Key"
+        panel.title = L10n.tr("Select SSH Private Key")
         panel.canChooseFiles = true
         panel.canChooseDirectories = false
         panel.allowsMultipleSelection = false
@@ -374,7 +374,7 @@ struct ConnectionDialog: View {
 
     private func formField<Content: View>(_ label: String, @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(label)
+            Text(L10n.tr(label))
                 .font(.system(size: 12))
                 .foregroundStyle(.secondary)
             content()

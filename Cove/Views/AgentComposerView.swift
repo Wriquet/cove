@@ -45,7 +45,7 @@ struct QueryEditorControls: View {
         Button {
             state.executeQuery()
         } label: {
-            Label("Run Current", systemImage: "play.fill")
+            Label(L10n.tr("Run Current"), systemImage: "play.fill")
         }
         .buttonStyle(.borderedProminent)
     }
@@ -57,9 +57,9 @@ struct AgentComposer: View {
 
     private var placeholder: String {
         if let selected = state.query.selectedAgent {
-            "Ask \(selected.shortName) to create or edit this query"
+            L10n.format("Ask %@ to create or edit this query", selected.shortName)
         } else {
-            "Ask an agent to create or edit this query"
+            L10n.tr("Ask an agent to create or edit this query")
         }
     }
 
@@ -97,12 +97,12 @@ struct AgentComposer: View {
                 Button {
                     state.cancelQueryAgentGeneration()
                 } label: {
-                    Label("Close Agent Mode", systemImage: "xmark.circle.fill")
+                    Label(L10n.tr("Close Agent Mode"), systemImage: "xmark.circle.fill")
                         .labelStyle(.iconOnly)
                 }
                 .buttonStyle(.plain)
                 .foregroundStyle(.secondary)
-                .help("Close Agent Mode")
+                .help(L10n.tr("Close Agent Mode"))
             }
 
             HStack(spacing: 8) {
@@ -118,13 +118,13 @@ struct AgentComposer: View {
                 Button {
                     state.generateQueryWithAgent()
                 } label: {
-                    Label("Generate", systemImage: "arrow.up")
+                    Label(L10n.tr("Generate"), systemImage: "arrow.up")
                         .labelStyle(.iconOnly)
                 }
                 .buttonStyle(.borderedProminent)
                 .keyboardShortcut(.return, modifiers: .command)
                 .disabled(generationDisabled)
-                .help("Generate Query")
+                .help(L10n.tr("Generate Query"))
             }
         }
         .controlSize(.small)
@@ -156,7 +156,7 @@ private struct AgentPicker: View {
                 Label(selected.displayName, systemImage: selected.systemImage)
                     .labelStyle(.titleAndIcon)
             } else {
-                Label("Select Agent", systemImage: "wand.and.sparkles")
+                Label(L10n.tr("Select Agent"), systemImage: "wand.and.sparkles")
                     .labelStyle(.titleAndIcon)
             }
         }

@@ -12,6 +12,7 @@ private let coveWindowBg = NSColor(name: nil) { appearance in
 struct CoveApp: App {
     @NSApplicationDelegateAdaptor private var delegate: AppDelegate
     @FocusedValue(\.appState) private var focusedTab
+    private var languageManager = LanguageManager.shared
 
     init() {
         NSApplication.shared.setActivationPolicy(.regular)
@@ -28,7 +29,7 @@ struct CoveApp: App {
         .windowToolbarStyle(.unifiedCompact(showsTitle: false))
         .commands {
             CommandGroup(after: .newItem) {
-                Button("New Tab") {
+                Button(L10n.tr("New Tab")) {
                     guard let currentWindow = NSApp.keyWindow,
                           let windowController = currentWindow.windowController else { return }
                     windowController.newWindowForTab(nil)
@@ -40,17 +41,33 @@ struct CoveApp: App {
             }
 
             CommandGroup(after: .toolbar) {
-                Button("Refresh") {
+                Button(L10n.tr("Refresh")) {
                     focusedTab?.refreshCurrentScope()
                 }
                 .keyboardShortcut("r", modifiers: .command)
                 .disabled(focusedTab?.connection == nil)
 
-                Button("Agent Mode") {
+                Button(L10n.tr("Agent Mode")) {
                     focusedTab?.showAgentModeAtCursor()
                 }
                 .keyboardShortcut("k", modifiers: .command)
                 .disabled(focusedTab == nil)
+
+                Divider()
+
+                Menu(L10n.tr("Language")) {
+                    ForEach(AppLanguage.allCases) { option in
+                        Button {
+                            languageManager.language = option
+                        } label: {
+                            if languageManager.language == option {
+                                Label(option.menuTitle, systemImage: "checkmark")
+                            } else {
+                                Text(option.menuTitle)
+                            }
+                        }
+                    }
+                }
             }
         }
     }

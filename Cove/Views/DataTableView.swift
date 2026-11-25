@@ -115,7 +115,7 @@ struct DataTableView: View {
             Button {
                 state.showSQLPreview = true
             } label: {
-                Label("Review Changes", systemImage: "eye")
+                Label(L10n.tr("Review Changes"), systemImage: "eye")
                     .font(.system(size: 12, weight: .medium))
             }
             .buttonStyle(.borderedProminent)
@@ -130,8 +130,8 @@ struct DataTableView: View {
                     get: { state.tableTab },
                     set: { state.tableTabChanged($0) }
                 )) {
-                    Text("Data").tag(TableTab.data)
-                    Text("Structure").tag(TableTab.structure)
+                    Text(L10n.tr("Data")).tag(TableTab.data)
+                    Text(L10n.tr("Structure")).tag(TableTab.structure)
                 }
                 .pickerStyle(.segmented)
                 .labelsHidden()
@@ -141,7 +141,7 @@ struct DataTableView: View {
 
             if state.isEditableTable {
                 Button { state.addRow() } label: {
-                    Label("New Row", systemImage: "plus")
+                    Label(L10n.tr("New Row"), systemImage: "plus")
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.small)

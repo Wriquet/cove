@@ -10,9 +10,9 @@ enum SSHTunnelError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .authFailed: "SSH authentication failed: check credentials"
-        case .connectionRefused(let host, let port): "SSH connection to \(host):\(port) failed"
-        case .tunnelFailed: "Could not establish SSH tunnel"
+        case .authFailed: L10n.tr("SSH authentication failed: check credentials")
+        case .connectionRefused(let host, let port): L10n.format("SSH connection to %@:%lld failed", host, Int64(port))
+        case .tunnelFailed: L10n.tr("Could not establish SSH tunnel")
         }
     }
 }

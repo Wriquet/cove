@@ -191,8 +191,10 @@ final class TableState {
         let totalPages = totalCount.map { UInt32(($0 + UInt64(pageSize) - 1) / UInt64(pageSize)) } ?? 1
         let from = offset + 1
         let to = totalCount.map { min(offset + pageSize, UInt32($0)) } ?? (offset + UInt32(rows.count))
-        let totalStr = totalCount.map { " of \($0)" } ?? ""
-        return "Rows \(from)-\(to)\(totalStr)  Page \(currentPage)/\(totalPages)"
+        if let total = totalCount {
+            return L10n.format("Rows %u-%u of %llu  Page %u/%u", from, to, total, currentPage, totalPages)
+        }
+        return L10n.format("Rows %u-%u  Page %u/%u", from, to, currentPage, totalPages)
     }
 
     var hasPrev: Bool { offset > 0 }

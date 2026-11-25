@@ -46,7 +46,7 @@ struct TreeView: View {
                         .saturation(1.5)
                         .frame(width: 14)
 
-                    Text(item.label)
+                    Text(L10n.treeNodeLabel(item.label, icon: item.icon))
                         .font(.system(size: 12))
                         .lineLimit(1)
                 }
@@ -68,18 +68,18 @@ struct TreeView: View {
     @ViewBuilder
     private func contextMenuItems(for path: [String]) -> some View {
         if state.connection != nil {
-            Button("Refresh") {
+            Button(L10n.tr("Refresh")) {
                 state.refreshNode(path: path)
             }
         }
         if let label = state.connection?.creatableChildLabel(path: path) {
-            Button("New \(label)...") {
+            Button(L10n.format("New %@...", L10n.tr(label))) {
                 state.promptCreateChild(parentPath: path)
             }
         }
         if state.connection?.isDeletable(path: path) == true {
             Divider()
-            Button("Drop \(path.last ?? "")...", role: .destructive) {
+            Button(L10n.format("Drop %@...", path.last ?? ""), role: .destructive) {
                 state.promptDeleteNode(path: path)
             }
         }

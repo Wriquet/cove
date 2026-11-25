@@ -103,7 +103,7 @@ enum BackendType: String, Codable, CaseIterable, Sendable {
     var connectionNotice: String? {
         switch self {
         case .duckdb:
-            "Requires brew install duckdb. Full Swift support is pending the official duckdb-swift package."
+            L10n.tr("Requires brew install duckdb. Full Swift support is pending the official duckdb-swift package.")
         default:
             nil
         }
@@ -116,8 +116,8 @@ enum SSHAuthMethod: String, Codable, Sendable, CaseIterable {
 
     var displayName: String {
         switch self {
-        case .password: "Password"
-        case .privateKey: "Private Key"
+        case .password: L10n.tr("Password")
+        case .privateKey: L10n.tr("Private Key")
         }
     }
 }

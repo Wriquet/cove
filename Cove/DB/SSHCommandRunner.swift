@@ -15,8 +15,8 @@ enum SSHCommandRunnerError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .authFailed: "SSH authentication failed: check credentials"
-        case .connectionRefused(let host, let port): "SSH connection to \(host):\(port) failed"
+        case .authFailed: L10n.tr("SSH authentication failed: check credentials")
+        case .connectionRefused(let host, let port): L10n.format("SSH connection to %@:%lld failed", host, Int64(port))
         }
     }
 }

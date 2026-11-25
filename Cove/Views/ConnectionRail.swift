@@ -35,6 +35,7 @@ struct ConnectionRail: View {
                 )
         }
         .buttonStyle(.plain)
+        .help(L10n.tr("New Connection"))
     }
 }
 
@@ -70,11 +71,11 @@ private struct ConnectionButton: View {
         .background(NativeTooltip(text: conn.name))
         .contextMenu {
             if state.activeConnectionId == conn.id {
-                Button("Disconnect") { state.disconnect() }
+                Button(L10n.tr("Disconnect")) { state.disconnect() }
                 Divider()
             }
-            Button("Edit") { state.openEditDialog(for: conn) }
-            Button("Delete", role: .destructive) { state.requestDeleteConnection(conn) }
+            Button(L10n.tr("Edit")) { state.openEditDialog(for: conn) }
+            Button(L10n.tr("Delete"), role: .destructive) { state.requestDeleteConnection(conn) }
         }
     }
 

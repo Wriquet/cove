@@ -13,12 +13,12 @@ struct RowInspectorView: View {
 
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
-                    Text(isNew ? "New Row" : "Row \(rowIdx + 1)")
+                    Text(isNew ? L10n.tr("New Row") : L10n.format("Row %lld", Int64(rowIdx + 1)))
                         .font(.system(size: 12, weight: .semibold))
                         .foregroundStyle(isNew ? Color.green : (isDeleted ? .red : .primary))
                     Spacer()
                     if isDeleted {
-                        Text("Deleting")
+                        Text(L10n.tr("Deleting"))
                             .font(.system(size: 10, weight: .medium))
                             .foregroundStyle(.red)
                     }
@@ -62,7 +62,7 @@ struct RowInspectorView: View {
             .onAppear { applyFocus() }
             .onChange(of: state.focusedColumn) { applyFocus() }
         } else {
-            Text("Select a row to inspect")
+            Text(L10n.tr("Select a row to inspect"))
                 .font(.system(size: 12))
                 .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)

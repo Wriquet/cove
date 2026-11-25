@@ -1,0 +1,199 @@
+/* 菜单栏与快捷键 */
+"New Tab" = "新建标签页";
+"Refresh" = "刷新";
+"Agent Mode" = "Agent 模式";
+"Language" = "语言";
+"Follow System" = "跟随系统";
+
+/* 主窗口与工具栏 */
+"Click" = "点击";
+"to create a new connection" = "创建新连接";
+"Delete Connection" = "删除连接";
+"Cancel" = "取消";
+"Delete" = "删除";
+"Are you sure you want to delete \"%@\"?" = "确定要删除连接“%@”吗？";
+"No connection" = "未连接";
+"Query" = "查询";
+"Select a table or open a query" = "选择一个数据表或打开查询编辑器";
+"Data" = "数据";
+"Structure" = "结构";
+"Toggle Sidebar" = "切换侧边栏";
+"Toggle Inspector" = "切换行检查器";
+
+/* 连接环境 */
+"Production" = "生产环境";
+"Staging" = "预发环境";
+"Development" = "开发环境";
+"Local" = "本地环境";
+
+/* 连接栏与连接配置弹窗 */
+"Disconnect" = "断开连接";
+"Edit" = "编辑";
+"New Connection" = "新建连接";
+"Edit Connection" = "编辑连接";
+"Name" = "名称";
+"Backend" = "数据库类型";
+"Environment" = "环境";
+"Database File" = "数据库文件";
+"Path to database file" = "数据库文件路径";
+"Browse..." = "浏览...";
+"Host" = "主机";
+"Port" = "端口";
+"User" = "用户名";
+"Password" = "密码";
+"Database" = "数据库";
+"Test" = "测试连接";
+"Save" = "保存";
+"Connecting..." = "正在连接...";
+"Connect" = "连接";
+"Test Successful" = "测试成功";
+"Test Failed" = "测试失败";
+"OK" = "好";
+"SSH Tunnel" = "SSH 隧道";
+"SSH Host" = "SSH 主机";
+"SSH Port" = "SSH 端口";
+"SSH User" = "SSH 用户名";
+"Auth Method" = "认证方式";
+"SSH Password" = "SSH 密码";
+"Private Key" = "私钥";
+"Passphrase" = "私钥密码";
+"Passphrase (if any)" = "私钥密码（如有）";
+"Select Database File" = "选择数据库文件";
+"Select SSH Private Key" = "选择 SSH 私钥文件";
+"Connection successful." = "连接成功。";
+"Connection timed out after 15 seconds." = "连接超时（15 秒）。";
+"Requires brew install duckdb. Full Swift support is pending the official duckdb-swift package." = "需要先执行 brew install duckdb。完整的原生 Swift 支持尚待官方 duckdb-swift 包发布。";
+
+/* 侧边栏与对象树 */
+"Connect to a database" = "请先连接到数据库";
+"New %@" = "新建%@";
+"New %@..." = "新建%@...";
+"Drop %@..." = "删除 %@...";
+"SQL Preview" = "SQL 预览";
+"Execute" = "执行";
+"Confirm Drop" = "确认删除";
+
+/* 数据表格与行检查器 */
+"Review Changes" = "预览更改";
+"New Row" = "新增行";
+"Row %lld" = "第 %lld 行";
+"Deleting" = "待删除";
+"Select a row to inspect" = "选择一行以查看详情";
+"Rows %u-%u of %llu  Page %u/%u" = "第 %u-%u 行（共 %llu 行）  第 %u/%u 页";
+"Rows %u-%u  Page %u/%u" = "第 %u-%u 行  第 %u/%u 页";
+
+/* 查询编辑器与 Agent 模式 */
+"Run Current" = "运行当前查询";
+"Ask %@ to create or edit this query" = "让 %@ 生成或修改此查询";
+"Ask an agent to create or edit this query" = "让 Agent 生成或修改此查询";
+"Close Agent Mode" = "关闭 Agent 模式";
+"Generate" = "生成";
+"Generate Query" = "生成查询";
+"Select Agent" = "选择 Agent";
+"agent mode" = "Agent 模式";
+"%llu rows affected" = "已影响 %llu 行";
+"Showing 10,000 of %lld rows" = "已显示前 10,000 行（共 %lld 行）";
+"%lld rows" = "共 %lld 行";
+"Generated with %@" = "已由 %@ 生成";
+"Timed out generating query with %@." = "使用 %@ 生成查询超时。";
+
+/* 可创建子对象名称 */
+"Schema" = "模式";
+"Table" = "数据表";
+"View" = "视图";
+"Sequence" = "序列";
+"Collection" = "集合";
+"Index" = "索引";
+"Key" = "键";
+"Keyspace" = "键空间";
+
+/* 创建对象表单字段 */
+"AS Query" = "AS 查询语句";
+"Capped" = "固定大小集合";
+"Character Set" = "字符集";
+"Collection Name" = "集合名称";
+"Column Name" = "列名";
+"Column Type" = "列类型";
+"Encoding" = "编码";
+"Engine" = "存储引擎";
+"Field" = "字段";
+"Increment By" = "步长";
+"Index Name" = "索引名称";
+"Max Size (bytes)" = "最大容量（字节）";
+"Member" = "成员";
+"Number of Replicas" = "副本数";
+"Number of Shards" = "分片数";
+"Owner" = "所有者";
+"Replication Class" = "复制策略";
+"Replication Factor" = "副本因子";
+"Score" = "分数";
+"Sequence Name" = "序列名";
+"Start Value" = "起始值";
+"Table Name" = "表名";
+"Type" = "类型";
+"Value" = "值";
+"View Name" = "视图名";
+"optional" = "可选";
+
+/* 树形结构分组节点 */
+"tree.group.Aggregates" = "聚合函数";
+"tree.group.Aliases" = "别名";
+"tree.group.Collections" = "集合";
+"tree.group.Columns" = "列";
+"tree.group.Constraints" = "约束";
+"tree.group.Dictionaries" = "字典";
+"tree.group.Events" = "事件";
+"tree.group.Functions" = "函数";
+"tree.group.Hashes" = "哈希";
+"tree.group.Indexes" = "索引";
+"tree.group.Lists" = "列表";
+"tree.group.Mappings" = "映射";
+"tree.group.Materialized Views" = "物化视图";
+"tree.group.Packages" = "包";
+"tree.group.Parts" = "分区";
+"tree.group.Procedures" = "存储过程";
+"tree.group.Sequences" = "序列";
+"tree.group.Sets" = "集合";
+"tree.group.Settings" = "设置";
+"tree.group.Sorted Sets" = "有序集合";
+"tree.group.Streams" = "流";
+"tree.group.Strings" = "字符串";
+"tree.group.Tables" = "表";
+"tree.group.Triggers" = "触发器";
+"tree.group.Types" = "类型";
+"tree.group.Views" = "视图";
+"tree.group.(no aliases)" = "（无别名）";
+
+/* 表单选项 */
+"option.No" = "否";
+"option.Yes" = "是";
+"option.Strings" = "字符串";
+"option.Hashes" = "哈希";
+"option.Lists" = "列表";
+"option.Sets" = "集合";
+"option.Sorted Sets" = "有序集合";
+"option.Streams" = "流";
+
+/* 自动补全类型 */
+"completion.function" = "函数";
+"completion.keyword" = "关键字";
+"completion.schema" = "模式";
+"completion.table" = "表";
+
+/* 错误信息 */
+"connection failed: %@" = "连接失败：%@";
+"query failed: %@" = "查询失败：%@";
+"invalid path: expected %lld segments, got %lld" = "无效路径：预期 %lld 段，实际 %lld 段";
+"connection test failed" = "连接测试失败";
+"Describe the query or correction first." = "请先描述需要生成或修改的查询。";
+"Connect to a database before using an agent." = "请先连接数据库后再使用 Agent。";
+"Choose an agent first." = "请先选择一个 Agent。";
+"%@ requires %@ on PATH." = "%@ 需要先在 PATH 中安装 %@。";
+"%@ did not return a query." = "%@ 未返回任何查询语句。";
+"SSH authentication failed: check credentials" = "SSH 认证失败：请检查凭据";
+"SSH connection to %@:%lld failed" = "连接 SSH 服务器 %@:%lld 失败";
+"Private key path not specified" = "未指定私钥路径";
+"Unsupported private key format" = "不支持的私钥格式";
+"Private key is encrypted" = "私钥已加密，请输入私钥密码";
+"Incorrect passphrase for private key" = "私钥密码错误";
+"Could not establish SSH tunnel" = "无法建立 SSH 隧道";

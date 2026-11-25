@@ -149,7 +149,7 @@ final class CompletionPopup: NSObject, NSTableViewDataSource, NSTableViewDelegat
         label.translatesAutoresizingMaskIntoConstraints = false
         cell.addSubview(label)
 
-        let detail = NSTextField(labelWithString: item.detail)
+        let detail = NSTextField(labelWithString: L10n.completionDetail(item.detail))
         detail.font = .monospacedSystemFont(ofSize: 11, weight: .regular)
         detail.textColor = .secondaryLabelColor
         detail.alignment = .right

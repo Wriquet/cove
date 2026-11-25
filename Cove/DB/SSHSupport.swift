@@ -14,12 +14,12 @@ enum SSHSupportError: LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .authFailed: "SSH authentication failed: check credentials"
-        case .connectionRefused(let host, let port): "SSH connection to \(host):\(port) failed"
-        case .missingPrivateKey: "Private key path not specified"
-        case .unsupportedKeyFormat: "Unsupported private key format"
-        case .encryptedKey: "Private key is encrypted"
-        case .wrongPassphrase: "Incorrect passphrase for private key"
+        case .authFailed: L10n.tr("SSH authentication failed: check credentials")
+        case .connectionRefused(let host, let port): L10n.format("SSH connection to %@:%lld failed", host, Int64(port))
+        case .missingPrivateKey: L10n.tr("Private key path not specified")
+        case .unsupportedKeyFormat: L10n.tr("Unsupported private key format")
+        case .encryptedKey: L10n.tr("Private key is encrypted")
+        case .wrongPassphrase: L10n.tr("Incorrect passphrase for private key")
         }
     }
 }

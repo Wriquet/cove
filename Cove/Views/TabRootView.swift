@@ -9,12 +9,14 @@ struct TabRootWrapper: View {
 
 struct TabRootView: View {
     @State private var appState: AppState?
+    private var languageManager = LanguageManager.shared
 
     var body: some View {
         Group {
             if let appState {
                 ContentView()
                     .environment(appState)
+                    .environment(\.locale, languageManager.locale)
                     .focusedValue(\.appState, appState)
             }
         }

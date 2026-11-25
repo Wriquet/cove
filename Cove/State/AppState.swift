@@ -198,15 +198,15 @@ final class AppState {
                         throw CancellationError()
                     }
                     guard let result = try await group.next() else {
-                        throw DbError.connection("connection test failed")
+                        throw DbError.connection(L10n.tr("connection test failed"))
                     }
                     group.cancelAll()
                     return result
                 }
                 await tunnel?.close()
-                self.dialog.testResult = (success: true, message: "Connection successful.")
+                self.dialog.testResult = (success: true, message: L10n.tr("Connection successful."))
             } catch is CancellationError {
-                self.dialog.testResult = (success: false, message: "Connection timed out after 15 seconds.")
+                self.dialog.testResult = (success: false, message: L10n.tr("Connection timed out after 15 seconds."))
             } catch {
                 self.dialog.testResult = (success: false, message: error.localizedDescription)
             }
@@ -1041,11 +1041,13 @@ final class AppState {
                 query.error = ""
                 if data.columns.isEmpty {
                     let n = data.rowsAffected ?? 0
-                    query.status = "\(n) rows affected"
+                    query.status = L10n.format("%llu rows affected", n)
                     query.result = nil
                 } else {
                     let rowCount = data.rows.count
-                    query.status = rowCount > 10_000 ? "Showing 10,000 of \(rowCount) rows" : "\(rowCount) rows"
+                    query.status = rowCount > 10_000
+                        ? L10n.format("Showing 10,000 of %lld rows", Int64(rowCount))
+                        : L10n.format("%lld rows", Int64(rowCount))
                     query.result = data
                     table = TableState(tablePath: [], result: data)
                     contentMode = .table
@@ -1097,7 +1099,7 @@ final class AppState {
             activeAgentTask = nil
             agentRunGeneration += 1
             query.agentExecuting = false
-            query.agentError = "Timed out generating query with \(kind.displayName)."
+            query.agentError = L10n.format("Timed out generating query with %@.", kind.displayName)
         }
 
         let generationTask = Task {
@@ -1144,7 +1146,7 @@ final class AppState {
                     }
                 }
                 query.agentPrompt = ""
-                query.agentStatus = "Generated with \(kind.displayName)"
+                query.agentStatus = L10n.format("Generated with %@", kind.displayName)
                 saveCurrentQuery()
             } catch {
                 guard agentRunGeneration == runGeneration else { return }

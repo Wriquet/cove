@@ -55,7 +55,7 @@ enum QueryAgentLauncher {
         }
 
         throw QueryAgentError.launchUnavailable(
-            "\(kind.displayName) requires \(kind.executableNames.joined(separator: " or ")) on PATH."
+            L10n.format("%@ requires %@ on PATH.", kind.displayName, kind.executableNames.joined(separator: " / "))
         )
     }
 

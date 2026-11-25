@@ -8,7 +8,7 @@ struct SQLPreviewSheet: View {
         let sql = state.generateSQLPreview()
 
         VStack(alignment: .leading, spacing: 0) {
-            Text("Review Changes")
+            Text(L10n.tr("Review Changes"))
                 .font(.system(size: 14, weight: .semibold))
                 .padding(.horizontal, 16)
                 .padding(.top, 16)
@@ -28,12 +28,12 @@ struct SQLPreviewSheet: View {
 
             HStack {
                 Spacer()
-                Button("Cancel") {
+                Button(L10n.tr("Cancel")) {
                     dismiss()
                 }
                 .keyboardShortcut(.cancelAction)
 
-                Button("Execute") {
+                Button(L10n.tr("Execute")) {
                     dismiss()
                     state.commitEdits()
                 }

@@ -6,10 +6,10 @@ enum ConnectionEnvironment: String, Codable, CaseIterable, Sendable {
 
     var displayName: String {
         switch self {
-        case .production:  "Production"
-        case .staging:     "Staging"
-        case .development: "Development"
-        case .local:       "Local"
+        case .production:  L10n.tr("Production")
+        case .staging:     L10n.tr("Staging")
+        case .development: L10n.tr("Development")
+        case .local:       L10n.tr("Local")
         }
     }
 

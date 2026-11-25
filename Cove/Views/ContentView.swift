@@ -66,7 +66,7 @@ struct ContentView: View {
                             .frame(width: 64, height: 64)
                             .opacity(0.6)
                         HStack(spacing: 5) {
-                            Text("Click")
+                            Text(L10n.tr("Click"))
                             Button {
                                 state.openDialog()
                             } label: {
@@ -81,7 +81,7 @@ struct ContentView: View {
                                     )
                             }
                             .buttonStyle(.plain)
-                            Text("to create a new connection")
+                            Text(L10n.tr("to create a new connection"))
                         }
                         .font(.system(size: 13))
                         .foregroundStyle(.tertiary)
@@ -105,21 +105,21 @@ struct ContentView: View {
                 .environment(state)
         }
         .alert(
-            "Delete Connection",
+            L10n.tr("Delete Connection"),
             isPresented: Binding(
                 get: { state.connectionToDelete != nil },
                 set: { if !$0 { state.connectionToDelete = nil } }
             )
         ) {
-            Button("Cancel", role: .cancel) {
+            Button(L10n.tr("Cancel"), role: .cancel) {
                 state.connectionToDelete = nil
             }
-            Button("Delete", role: .destructive) {
+            Button(L10n.tr("Delete"), role: .destructive) {
                 state.confirmDeleteConnection()
             }
         } message: {
             if let conn = state.connectionToDelete {
-                Text("Are you sure you want to delete \"\(conn.name)\"?")
+                Text(L10n.format("Are you sure you want to delete \"%@\"?", conn.name))
             }
         }
     }
@@ -158,7 +158,7 @@ struct ContentView: View {
         }
 
         ToolbarItem(placement: .principal) {
-            Text(state.breadcrumb.isEmpty ? "No connection" : state.breadcrumb)
+            Text(state.breadcrumb.isEmpty ? L10n.tr("No connection") : state.breadcrumb)
                 .font(.system(size: 12))
                 .foregroundStyle(connected ? .primary : .tertiary)
                 .padding(.horizontal, 12)
@@ -171,7 +171,7 @@ struct ContentView: View {
                 get: { state.showQueryEditor },
                 set: { _ in state.toggleQuery() }
             )) {
-                Text("Query")
+                Text(L10n.tr("Query"))
                     .font(.system(size: 12, weight: .medium))
             }
             .toggleStyle(.button)
@@ -182,11 +182,13 @@ struct ContentView: View {
             Button { state.showSidebar.toggle() } label: {
                 Image(systemName: "sidebar.leading")
             }
+            .help(L10n.tr("Toggle Sidebar"))
             .disabled(!connected)
 
             Button { state.showInspector.toggle() } label: {
                 Image(systemName: "sidebar.trailing")
             }
+            .help(L10n.tr("Toggle Inspector"))
             .disabled(!canInspect)
         }
     }
@@ -223,7 +225,7 @@ struct ContentView: View {
     private var tableOrEmpty: some View {
         switch state.contentMode {
         case .empty:
-            Text("Select a table or open a query")
+            Text(L10n.tr("Select a table or open a query"))
                 .font(.system(size: 13))
                 .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -269,8 +271,8 @@ struct ContentView: View {
                 get: { state.tableTab },
                 set: { state.tableTabChanged($0) }
             )) {
-                Text("Data").tag(TableTab.data)
-                Text("Structure").tag(TableTab.structure)
+                Text(L10n.tr("Data")).tag(TableTab.data)
+                Text(L10n.tr("Structure")).tag(TableTab.structure)
             }
             .pickerStyle(.segmented)
             .labelsHidden()

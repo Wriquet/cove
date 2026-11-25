@@ -22,7 +22,7 @@ actor QueryAgentSession {
         let response = try Self.preferredOutput(for: launch, processOutput: processResult.stdout)
         let query = QueryAgentPromptBuilder.sanitizeAgentResponse(response)
         guard !query.isEmpty else {
-            throw QueryAgentError.invalidResponse("\(kind.displayName) did not return a query.")
+            throw QueryAgentError.invalidResponse(L10n.format("%@ did not return a query.", kind.displayName))
         }
 
         return QueryAgentResponse(query: query)
