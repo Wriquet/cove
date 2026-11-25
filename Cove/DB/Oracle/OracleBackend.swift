@@ -41,13 +41,7 @@ final class OracleBackend: DatabaseBackend, @unchecked Sendable {
 
     static func connect(config: ConnectionConfig) async throws -> OracleBackend {
         let port = Int(config.port) ?? 1521
-        let oraConfig = OracleConnection.Configuration(
-            host: config.host,
-            port: port,
-            service: .serviceName(config.database),
-            username: config.user,
-            password: config.password
-        )
+        let oraConfig = try await resolveConfiguration(config: config, port: port)
 
         let client = OracleClient(configuration: oraConfig)
         let task = Task { await client.run() }
@@ -65,6 +59,64 @@ final class OracleBackend: DatabaseBackend, @unchecked Sendable {
         }
 
         return OracleBackend(client: client, runningTask: task)
+    }
+
+    private static func resolveConfiguration(
+        config: ConnectionConfig,
+        port: Int
+    ) async throws -> OracleConnection.Configuration {
+        let logger = Logger(label: "cove.oracle")
+
+        func makeConfig(service: OracleServiceMethod) -> OracleConnection.Configuration {
+            var cfg = OracleConnection.Configuration(
+                host: config.host,
+                port: port,
+                service: service,
+                username: config.user,
+                password: config.password
+            )
+            // Avoid oracle-nio 1.0.0-rc.4 bug where OOB check on Oracle 19c (TNS 318)
+            // erroneously enables 23ai fastAuth and causes uncleanShutdown.
+            cfg.disableOOB = true
+            return cfg
+        }
+
+        let serviceConfig = makeConfig(service: .serviceName(config.database))
+        do {
+            let conn = try await OracleConnection.connect(
+                configuration: serviceConfig,
+                id: 1,
+                logger: logger
+            )
+            try? await conn.close()
+            return serviceConfig
+        } catch let error as OracleSQLError where isInvalidServiceName(error) {
+            let sidConfig = makeConfig(service: .sid(config.database))
+            do {
+                let conn = try await OracleConnection.connect(
+                    configuration: sidConfig,
+                    id: 2,
+                    logger: logger
+                )
+                try? await conn.close()
+                return sidConfig
+            } catch let sidError as OracleSQLError {
+                throw DbError.connection(sidError.serverMessage)
+            } catch {
+                throw DbError.connection(String(describing: error))
+            }
+        } catch let error as OracleSQLError {
+            throw DbError.connection(error.serverMessage)
+        } catch {
+            throw DbError.connection(String(describing: error))
+        }
+    }
+
+    private static func isInvalidServiceName(_ error: OracleSQLError) -> Bool {
+        if error.serverInfo?.number == 12514 {
+            return true
+        }
+        return String(describing: error).contains("12514")
     }
 
     deinit {
